@@ -30,11 +30,20 @@ Ejemplo de respuestas exitosas:
     }
 }
 ```
-
+Autenticacion
+- Log In
+- Sign In
+- Recovery Password 
+id
+userId
+used true
+- Verify Account 
 
 Cuando hacemos un login recibimos lo siguiente
     - Email
     - Password
+
+    - POST 
 
 Validar si el usuario existe
     - Vamos a buscar el usuario al que le pertenezca el correo electronico que recibimos

@@ -5,6 +5,7 @@ const db = require('./utils/database')
 const initModels = require('./models/initModels')
 
 const userRouter = require('./users/users.router')
+const authRouter = require('./auth/auth.router')
 
 const app = express()
 
@@ -33,6 +34,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/auth', authRouter)
 
 //? Esta debe ser la ultima ruta en mi app
 app.use('*', (req, res)=> {
