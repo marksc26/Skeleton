@@ -32,3 +32,15 @@ Ejemplo de respuestas exitosas:
 ```
 
 
+Cuando hacemos un login recibimos lo siguiente
+    - Email
+    - Password
+
+Validar si el usuario existe
+    - Vamos a buscar el usuario al que le pertenezca el correo electronico que recibimos
+
+Validar si la contraseña es correcta
+    - Validando la contraseña que recibimos con la contraseña que esta en mi base de datos
+
+Generar una respuesta con el token
+
