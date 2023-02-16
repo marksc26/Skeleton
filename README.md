@@ -53,3 +53,16 @@ Validar si la contraseña es correcta
 
 Generar una respuesta con el token
 
+# Autenticacion por tokens
+
+1. Recibimos el token
+
+2. Ese token lo desencriptamos
+
+3. Una vez el token desencriptado, tenemos que ver si pertenece a un usuario de mi app
+    - Esto se logra haciendo una validacion buscando en mi db si existe x usuario con el id que viene en el token
+
+4. Damos paso a la peticion si es que es un usuario real o generamos un error en caso de que no lo sea
+
+
+
