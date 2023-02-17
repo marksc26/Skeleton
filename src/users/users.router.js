@@ -8,7 +8,7 @@ router.post('/', userServices.postNewUser)
 
 router.get('/me', passportJwt, userServices.getMyUser)
 //router.patch('/')
-//router.delete('/')
+router.delete('/me', passportJwt, userServices.deleteMyUser)
 
 //? /api/v1/users/me
 

@@ -182,11 +182,34 @@ const getMyUser = (req, res) => {
         })
 }
 
+const deleteMyUser = (req, res) => {
+
+    const id = req.user.id
+
+    usersControllers.deleteUser(id)
+        .then(data => {
+            responses.success({
+                res,
+                status:200,
+                message: `User deleted successfully with id: ${id}`
+            })
+        })
+        .catch(err => {
+            responses.error({
+                res,
+                status:400,
+                message: 'Something bad trying to delete this user'
+            })
+        })
+
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
     postNewUser,
     patchUser,
     deleteUser,
-    getMyUser
+    getMyUser,
+    deleteMyUser
 }
