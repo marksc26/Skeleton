@@ -157,10 +157,36 @@ const deleteUser = (req, res) => {
         })
 }
 
+//? los servicios para acciones sobre mi propio usuario:
+
+const getMyUser = (req, res) => {
+
+    const id = req.user.id
+
+    usersControllers.findUserById(id)
+        .then(data => {
+            responses.success({
+                res,
+                status: 200,
+                message: 'This is your current user',
+                data
+            })
+        })
+        .catch(err => {
+            responses.error({
+                res,
+                status:400,
+                message: 'Something bad getting the current user',
+                data: err
+            })
+        })
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
     postNewUser,
     patchUser,
-    deleteUser
+    deleteUser,
+    getMyUser
 }
