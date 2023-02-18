@@ -1,5 +1,6 @@
 const usersControllers = require('./users.controllers')
 const responses = require('../utils/handleResponses')
+const {hashPassword} = require('../utils/crypto')
 
 const getAllUsers = (req, res) => {
     usersControllers.findAllUser()
@@ -204,6 +205,40 @@ const deleteMyUser = (req, res) => {
 
 }
 
+const patchMyUser = (req, res) => {
+
+    const id = req.user.id //? Esto es unicamente para saber quien es el usuario
+
+    const { firstName, lastName, email, password, profileImage, phone } = req.body
+
+    const userObj = {
+        firstName,
+        lastName,
+        email,
+        password: hashPassword(password),
+        profileImage,
+        phone
+    }
+
+    usersControllers.updateUser(id, userObj)
+        .then(() => {
+            responses.success({
+                res,
+                status: 200,
+                message: 'Your user has been updated succesfully!',
+            })
+        })
+        .catch(err => {
+            responses.error({
+                res,
+                status: 400,
+                message: 'Something bad',
+                data: err
+            })
+        })
+}
+
+
 module.exports = {
     getAllUsers,
     getUserById,
@@ -211,5 +246,6 @@ module.exports = {
     patchUser,
     deleteUser,
     getMyUser,
-    deleteMyUser
+    deleteMyUser,
+    patchMyUser
 }
