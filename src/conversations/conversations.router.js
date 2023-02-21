@@ -1,6 +1,8 @@
 const router = require('express').Router()
 
 const conversationServices = require('./conversations.services')
+const messageServices = require('../messages/messages.services')
+
 const passportJwt = require('../middlewares/auth.middleware')
 
 router.route('/')
@@ -12,8 +14,8 @@ router.route('/')
 //     .patch()
 //     .delete()
 
-// router.route('/:id/messages')
-//     .get()
+router.route('/:conversation_id/messages')
+    .get(passportJwt, messageServices.getAllMessagesByConversation)
 //     .post()
 
 module.exports = router
