@@ -7,6 +7,7 @@ const passportJwt = require('./middlewares/auth.middleware')
 
 const userRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.router')
+const conversationRouter = require('./conversations/conversations.router')
 
 const app = express()
 
@@ -45,6 +46,7 @@ app.get('/protected',
 
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/conversations', conversationRouter)
 
 //? Esta debe ser la ultima ruta en mi app
 app.use('*', (req, res)=> {

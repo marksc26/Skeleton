@@ -86,3 +86,24 @@ V2 -> Version de 1 peticion pero controladores grandes
 4. Se crea el participante owner
 5. Se crea el participante guest
 
+
+Conversation Router 
+
+baseUrl -> /api/v1/conversations
+
+- /
+- /:conversation_id
+- /:conversation_id/messages
+- /:conversation_id/participants
+
+Conversaciones de Sahid
+
+- Sahid - Roberto
+- Sahid - Antonio
+- Sahid - Luis Humberto 
+
+Conversaciones de Antonio 
+
+- Antonio - Roberto
+
+
