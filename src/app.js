@@ -10,6 +10,8 @@ const authRouter = require('./auth/auth.router')
 
 const app = express()
 
+const configs = require("../../clone-chat-APi/config").api
+
 app.use(express.json())
 
 db.authenticate()
@@ -28,7 +30,7 @@ app.get('/', (req, res) => {
         status: 200,
         message: 'Servidor inicializado correctamente',
         data: {
-            "users": "http://localhost:9000/api/v1/users",
+            "users": `${configs.host}/api/v1/users`,
             
         }
     })
@@ -38,17 +40,17 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/auth', authRouter)
-
+git
 
 //? Esta debe ser la ultima ruta en mi app
 app.use('*', (req, res)=> {
     responseHandlers.error({
         res,
         status: 404,
-        message: 'URL not found, please try with http://localhost:9000/',
+        message: `URL not found, please try with ${configs.host}`,
     })
 })
 
-app.listen(9000,() => {
+app.listen(configs.port,() => {
     console.log('Server started at port 9000')
 })
